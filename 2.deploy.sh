@@ -1,5 +1,6 @@
-SECONDS=0
+# first source 1.env.sh with your env variables PROJECT_ID and REGION and set cloudrun.yaml with your storage bucket.
 
+SECONDS=0
 gcloud builds submit --tag "$REGION-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/upstream" --project $PROJECT_ID
 
 # gcloud run deploy upstream --image=$REGION-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/upstream --region=europe-west1 --project $PROJECT_ID
