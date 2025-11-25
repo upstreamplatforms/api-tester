@@ -1,7 +1,7 @@
 # API Tester
 A simple TDD unit testing framework for APIs.
 
-<img width="700" alt="image" src="https://github.com/user-attachments/assets/aae3a86e-8cd4-4842-8690-e1e6be8b2072" />
+<img width="700" alt="API Tester Landing Page" src="https://github.com/user-attachments/assets/33f58485-9b2c-4374-9928-b76df38acaca" />
 
 🚀 Test the beta version live here: https://tdd.upstr.dev.
 
@@ -40,7 +40,9 @@ The above test suite shows two tests in a test suite.
 
 ## Running tests
 ### Web client
-You can run your tests in the web client by pressing the "Run" button. All tests created and run on the web client are saved in **stateful mode** on the web server as described below, and can also be run via API.
+You can run your tests in the web client by pressing the "Run" button. All tests created and run on the web client are saved in **stateful mode** on the web server as described below, and can also be run via API. You can access the web client at the root URL of your deployment, or the public test version here: https://tdd.upstr.dev.
+
+<img width="700" alt="API Tester Dashboard" src="https://github.com/user-attachments/assets/c623a2ff-ee5e-49ed-b4cd-bf43d282b77d" />
 
 ### Web server
 You can run tests on the web server either in **stateful mode** which saves all tests and results on the server, or **stateless mode** which just runs the tests and returns the results, but doesn't persist any tests or results.
