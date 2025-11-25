@@ -220,14 +220,15 @@
                 <!-- Test Definition Section -->
                 <section class="mb-8">
                     <h2
-                        class="text-2xl font-semibold text-white mb-6 border-l-4 border-accent-yellow pl-3"
+                        class="text-2xl font-semibold text-white mb-6 border-l-4 border-accent-yellow pl-3 hover:cursor-pointer"
+                        onclick="toggleDefinition()"
                     >
                         Test Suite Definition
                     </h2>
                     <div
                         id="def-editor"
-                        class="max-h-[420px]"
-                        style="overflow-y: auto"
+                        class=""
+                        style="overflow-y: auto; resize: vertical"
                     >
                         <textarea id="yaml-editor-textarea"></textarea>
                     </div>
@@ -329,6 +330,7 @@
             const dashboardLabelElement =
                 document.getElementById("dashboardTypeLabel");
             const spinnerOverlay = document.getElementById("spinner-overlay");
+            const defEditor = document.getElementById("def-editor");
             const urlParams = new URLSearchParams(window.location.search);
             let testId = urlParams.get("id");
             let viewId = testId;
@@ -765,6 +767,10 @@
                         method: "DELETE",
                     },
                 );
+            }
+
+            function toggleDefinition() {
+                if (defEditor) defEditor.classList.toggle("hidden");
             }
 
             function showInputModal() {

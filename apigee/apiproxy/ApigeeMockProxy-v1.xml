@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="3" name="ApigeeMockProxy-v1">
+  <DisplayName/>
+  <Description/>
+  <CreatedAt>1764070073721</CreatedAt>
+  <LastModifiedAt>1764070073721</LastModifiedAt>
+  <BasePaths>/v1/apigeemock</BasePaths>
+  <Policies>
+    <Policy>AM-SetVariables</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>default</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>

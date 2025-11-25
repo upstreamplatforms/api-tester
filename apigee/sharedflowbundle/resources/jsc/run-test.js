@@ -198,9 +198,13 @@ function getValue(name, context, responseContent) {
         result = jsonPath(responseObject, name, undefined);
     }
   } else {
+    if (name == "response.status") name="response.status.code";
     result = context.getVariable(name);
   }
-  return result.toString();
+  if (!result)
+    return "";
+  else
+    return result.toString();
 }
 
 function jsonPath(obj, expr, arg) {
@@ -743,4 +747,3 @@ function jsonPath(obj, expr, arg) {
 		return P.result.length ? P.result : [];
 	}
 }
-

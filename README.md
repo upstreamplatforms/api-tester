@@ -94,7 +94,7 @@ tests:
   - name: test httpbin.org hostname
     url: https://httpbin.org
     path: /get
-    verb: get
+    method: get
     assertions:
       - $.headers.Host===httpbin.org
 '
