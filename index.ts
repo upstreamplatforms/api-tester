@@ -24,6 +24,7 @@ app.use(
 
 const basePath = process.env.BASE_PATH ?? "./data";
 const eventClients = {};
+const tempTestData = {};
 
 app.get("/tests/:id", function (req, res) {
   let responseType = req.header("Accept");
@@ -52,6 +53,16 @@ app.get("/tests/:id", function (req, res) {
         }),
       );
     } else res.send(JSON.stringify(tests, null, 2));
+  } else if (tempTestData[testId]) {
+    if (responseType == "application/yaml") {
+      res.setHeader("Content-Type", "application/yaml");
+      res.send(
+        YAML.stringify(tempTestData[testId].tests, {
+          aliasDuplicateObjects: false,
+          blockQuote: "literal",
+        }),
+      );
+    } else res.send(JSON.stringify(tempTestData[testId].tests, null, 2));
   } else {
     res.status(404).send("Not found.");
   }
@@ -308,7 +319,16 @@ app.post("/tests/run", async (req, res) => {
   if (tests && requestType == "application/yaml") tests = YAML.parse(tests);
 
   if (tests) {
+    // get temp test id
+    tests.id = crypto.randomUUID();
+    tempTestData[tests.id] = {
+      tests: tests,
+      results: [],
+    };
     let results = await runTests(tests);
+    if (tempTestData[tests.id].results.length > 0)
+      results = tempTestData[tests.id].results;
+    delete tempTestData[tests.id];
     if (responseType == "application/yaml") {
       res.setHeader("Content-Type", "application/yaml");
       res.send(
@@ -319,7 +339,7 @@ app.post("/tests/run", async (req, res) => {
       );
     } else res.send(JSON.stringify(results, null, 2));
   } else {
-    res.status(400).send("Could not parse tests body.");
+    res.status(400).send("Could not parse tests.");
   }
 });
 
@@ -362,6 +382,17 @@ app.post("/tests/:id/results", function (req, res) {
       } else res.send("OK.");
     } else {
       res.status(401).send("Not authorized.");
+    }
+  } else if (tempTestData[req.params.id]) {
+    // temp test results
+    let testCaseResults: any = req.body;
+    if (testCaseResults && requestType == "application/yaml")
+      testCaseResults = YAML.parse(testCaseResults);
+    if (testCaseResults) {
+      tempTestData[req.params.id].results.push(testCaseResults);
+      res.send("OK.");
+    } else {
+      return res.status(400).send("Bad message.");
     }
   } else {
     return res.status(404).send("Not found.");
@@ -462,7 +493,7 @@ async function runTests(tests: any): Promise<any> {
             },
             results: {
               tool: {
-                name: "upstr",
+                name: "api-tester",
               },
               summary: {
                 tests: 0,
@@ -502,12 +533,15 @@ async function runTests(tests: any): Promise<any> {
               );
               testResults.results.summary.stop = Date.now();
               results.push(testResults);
-              updateResults(tests.viewId, testResults);
-              updateTestCaseResults(
-                tests.viewId,
-                testCaseObject.name,
-                testResults,
-              );
+              if (!tempTestData[tests.id]) {
+                // only save results if not a temp test run
+                updateResults(tests.viewId, testResults);
+                updateTestCaseResults(
+                  tests.viewId,
+                  testCaseObject.name,
+                  testResults,
+                );
+              }
             } else {
               console.log("Results found in response, skipped assertions...");
             }
@@ -665,13 +699,17 @@ function getValue(name: string, context: any, responseContent: any): string {
   try {
     if (name.startsWith("$")) {
       result = jp.query(JSON.parse(responseContent), name);
-    } else if (name.startsWith("response.header")) {
+    } else if (name.startsWith("response.header.")) {
       let simpleName = name.replace("response.header.", "");
       result = context.headers.get(simpleName);
       if (!result) {
         console.log(`Could not find header ${simpleName}.`);
         result = "";
       }
+    } else if (name.startsWith("response.status")) {
+      result = context.status;
+    } else if (name.startsWith("response.statusText")) {
+      result = context.statusText;
     }
   } catch (e) {
     console.error(`ERROR getValue: ${name} - ${e.message}`);

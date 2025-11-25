@@ -75,7 +75,7 @@
                                 >Usage</a
                             >
                             <a
-                                href="https://github.com/tyayers/upstream-tdd"
+                                href="https://github.com/upstreamplatforms/api-tester"
                                 class="text-gray-300 hover:text-primary-accent transition duration-150"
                                 >GitHub</a
                             >
@@ -317,112 +317,15 @@
                 </div>
             </section>
 
-            <!-- Usage Section -->
-            <section id="usage" class="space-y-12">
-                <h2 class="text-4xl font-bold text-gray-200 text-center">
-                    Usage
-                </h2>
-
-                <!-- Step 1 -->
-                <div
-                    class="flex flex-col lg:flex-row bg-dark-card p-6 rounded-xl border border-gray-800 shadow-xl"
-                >
-                    <div class="lg:pr-8 mb-4 lg:mb-0">
-                        <h3
-                            class="text-2xl font-semibold text-primary-accent mb-2"
-                        >
-                            Simple and Scalable Deployment
-                        </h3>
-                        <div class="flex">
-                            <!--<svg
-                                width="320px"
-                                viewBox="0 0 16 16"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g
-                                    id="SVGRepo_tracerCarrier"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M12 0H4V2H1V5L4 8H1V11L4 14V16H12V14L15 11V8H12L15 5V2H12V0ZM8 5C8.82843 5 9.5 4.32843 9.5 3.5C9.5 2.67157 8.82843 2 8 2C7.17157 2 6.5 2.67157 6.5 3.5C6.5 4.32843 7.17157 5 8 5ZM8 14C8.82843 14 9.5 13.3284 9.5 12.5C9.5 11.6716 8.82843 11 8 11C7.17157 11 6.5 11.6716 6.5 12.5C6.5 13.3284 7.17157 14 8 14ZM9.5 8C9.5 8.82843 8.82843 9.5 8 9.5C7.17157 9.5 6.5 8.82843 6.5 8C6.5 7.17157 7.17157 6.5 8 6.5C8.82843 6.5 9.5 7.17157 9.5 8Z"
-                                        fill="#0d9488"
-                                    ></path>
-                                </g>
-                            </svg>-->
-                            <p class="text-gray-400">
-                                The API Tester service is a single container
-                                using a storage directory for tests and results.
-                                Use the SaaS version (unsupported) for free, or
-                                deploy to
-                                <a href="https://cloud.google.com/run"
-                                    >Google Cloud Run</a
-                                >, or other container platforms, with
-                                scale-to-zero during non-use for free/cheap
-                                self-deployments.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div
-                    class="flex flex-col lg:flex-row bg-dark-card p-6 rounded-xl border border-gray-800 shadow-xl"
-                >
-                    <div class="lg:pr-8 mb-4 lg:mb-0">
-                        <h3
-                            class="text-2xl font-semibold text-primary-accent mb-2"
-                        >
-                            Edit test cases in the browser or update via REST
-                            API
-                        </h3>
-                        <p class="text-gray-400">
-                            Test cases can be continually updated in the
-                            dashboard editor, or pushed via REST calls. Test
-                            results can be run for HTTP services by clicking the
-                            "Save & Run" button in the dashboard, or calling the
-                            <b>/run</b> REST endpoint. Results for other
-                            platforms can be ingested via REST calls to the
-                            <b>/results</b> endpoint.
-                        </p>
-                    </div>
-                </div>
-                <!-- Step 3 -->
-                <div
-                    class="flex flex-col lg:flex-row bg-dark-card p-6 rounded-xl border border-gray-800 shadow-xl"
-                >
-                    <div class="lg:pr-8 mb-4 lg:mb-0">
-                        <h3
-                            class="text-2xl font-semibold text-primary-accent mb-2"
-                        >
-                            View live results in the dashboard
-                        </h3>
-                        <p class="text-gray-400">
-                            The service pushes out live result updates to the
-                            dashboard via <b>SSE events</b>. Watch as your test
-                            results improve, monitor the traffic light status of
-                            all tests in true <b>TDD glory</b>. Quick, easy &
-                            pragmatic - how software should be!
-                        </p>
-                    </div>
-                </div>
-            </section>
-
             <!-- Integration Section -->
             <section id="integration" class="space-y-8">
                 <h2 class="text-4xl font-bold text-gray-200 text-center">
-                    Seamless Integration
+                    Easy API & Proxy Unit Tests
                 </h2>
                 <p class="text-lg text-gray-400 text-center max-w-2xl mx-auto">
-                    API Tester works out-of-the-box for public HTTP services, as
-                    well as in Apigee proxies via policies. Ingesting results
-                    from any platform is easy, so more integrations can be
-                    easily added!
+                    Start with easy API tests by testing headers & payloads. Go
+                    deeper with Proxy Unit Tests of runtime variables with the
+                    sample Apigee integration, with more platforms to follow.
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-8 pt-6">
@@ -431,31 +334,34 @@
                         class="bg-dark-card p-6 rounded-xl border-t-4 border-l-4 border-purple-500 shadow-xl"
                     >
                         <h3 class="text-2xl font-semibold text-purple-400 mb-4">
-                            Public HTTP Services
+                            Easy API Tests
                         </h3>
                         <p class="text-gray-400 mb-4">
-                            Public HTTP Services can be tested automatically by
-                            API Tester via fetch calls. Test cases are executed
-                            in-process, and saved as results as well as
-                            broadcast out in real-time to any dashboards that
-                            are listening.
+                            Any API can be tested through header and payload
+                            assertions. Test results can be saved and broadcast
+                            out in real-time to any web clients with either the
+                            admin or view id.
                         </p>
-                        <pre
-                            class="bg-gray-900 p-4 rounded-lg text-sm overflow-x-auto border border-gray-700 shadow-inner"
+                        <div
+                            class="bg-gray-800 p-4 rounded-lg font-mono text-sm shadow-xl overflow-x-auto"
                         >
-                        <code class="text-white block">
-name: Mock Target Tests v1
-tests:
-- name: test response payload
-  url: https://mocktarget.apigee.net
-  path: /json
-  verb: GET
-  assertions:
-    - $.firstName==john
-    - $.city==San Jose
-    - response.header.content-length==68
-                        </code>
-                    </pre>
+                            <pre>
+<span class="text-green-400">curl </span><span class="text-yellow-400">-X POST</span> <span class="text-white">https://tdd.upstr.dev/tests/run</span> <span class="text-yellow-400">\</span>
+<span class="text-yellow-400">-H</span> <span class="text-white">"Content-Type: application/yaml"</span> <span class="text-yellow-400">\</span>
+<span class="text-yellow-400">-d</span> <span class="text-white">'</span>
+<span class="text-white">tests:</span>
+  <span class="text-white">- name: </span><span class="text-blue-400">test apigee mock</span>
+    <span class="text-white">url: </span><span class="text-white">https://mocktarget.apigee.net</span>
+    <span class="text-white">path: </span><span class="text-blue-400">/json</span>
+    <span class="text-white">verb: </span><span class="text-blue-400">GET</span>
+    <span class="text-white">assertions:</span>
+      <span class="text-white">- </span><span class="text-yellow-400">$.firstName</span><span class="text-white">==</span><span class="text-blue-400">john</span>
+      <span class="text-white">- </span><span class="text-yellow-400">$.city</span><span class="text-white">===</span><span class="text-blue-400">San Jose</span>
+      <span class="text-white">- </span><span class="text-yellow-400">response.status</span><span class="text-white">===</span><span class="text-blue-400">200</span>
+      <span class="text-white">- </span><span class="text-yellow-400">response.header.content-length</span><span class="text-white">===</span><span class="text-blue-400">68</span>
+<span class="text-white">'</span>
+                            </pre>
+                        </div>
                     </div>
 
                     <!-- Framework Card -->
@@ -463,30 +369,34 @@ tests:
                         class="bg-dark-card p-6 rounded-xl border-t-4 border-l-4 border-teal-500 shadow-xl"
                     >
                         <h3 class="text-2xl font-semibold text-teal-400 mb-4">
-                            Apigee Proxies
+                            Proxy Unit Tests
                         </h3>
                         <p class="text-gray-400 mb-4">
-                            Add the policies to your proxy, pass in an
-                            <b>x-upstream-id</b> header, and watch as your
-                            internal proxy tests of runtime variables are run
-                            and updated in real-time.
+                            Using the sample Apigee integration, you can set and
+                            test runtime variables during the proxy processing,
+                            enabling true API unit tests for more complete test
+                            coverage.
                         </p>
-                        <pre
-                            class="bg-gray-900 p-4 rounded-lg text-sm overflow-x-auto border border-gray-700 shadow-inner"
+                        <div
+                            class="bg-gray-800 p-4 rounded-lg font-mono text-sm shadow-xl overflow-x-auto"
                         >
-                            <code class="text-white block">
-name: Gemini proxy test
-tests:
-  - name: test prompt variables
-    url: https://api.mycompany.com
-    path: /gemini
-    verb: POST
-    assertions:
-      - llm.promptInput==why is the sky blue?
-      - llm.extimatedTokenLength==4
-EOF
-                            </code>
-                    </pre>
+                            <pre>
+<span class="text-green-400">curl </span><span class="text-yellow-400">-X POST</span> <span class="text-white">https://tdd.upstr.dev/tests/run</span> <span class="text-yellow-400">\</span>
+<span class="text-yellow-400">-H</span> <span class="text-white">"Content-Type: application/yaml"</span> <span class="text-yellow-400">\</span>
+<span class="text-yellow-400">-d</span> <span class="text-white">'</span>
+<span class="text-white">tests:</span>
+  <span class="text-white">- name: </span><span class="text-blue-400">test apigee mock proxy</span>
+    <span class="text-white">url: </span><span class="text-white">https://api.upstr.dev/v1/apigeemock</span>
+    <span class="text-white">path: </span><span class="text-blue-400">/json</span>
+    <span class="text-white">verb: </span><span class="text-blue-400">GET</span>
+    <span class="text-white">variables:</span>
+      <span class="text-white">testVar: </span><span class="text-blue-400">test123</span>
+    <span class="text-white">assertions:</span>
+      <span class="text-white">- </span><span class="text-yellow-400">testVar</span><span class="text-white">===</span><span class="text-blue-400">test123</span>
+      <span class="text-white">- </span><span class="text-yellow-400">proxy.basepath</span><span class="text-white">===</span><span class="text-blue-400">/v1/apigeemock</span>
+<span class="text-white">'</span>
+                            </pre>
+                        </div>
                     </div>
                 </div>
             </section>

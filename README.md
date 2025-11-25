@@ -116,11 +116,14 @@ Deploy the shared flow using the [apigeecli](https://github.com/apigee/apigeecli
 PROJECT_ID=YOUR_APIGEE_ORG
 ENV=YOUR_APIGEE_ENV
 # create and deploy the shared flow
-apigeecli sharedflows create bundle -n SF-Tester-v1 -f ./apigee/sharedflowbundle -o $PROJECT_ID -e $ENV --ovr -t $(gcloud auth print-access-token)
+apigeecli sharedflows create bundle -n SF-Tester-v1 -f ./apigee/sharedflowbundle \
+  -o $PROJECT_ID -e $ENV --ovr -t $(gcloud auth print-access-token)
 
 # attach pre-proxy and post-proxy flowhooks for the environment
-apigeecli flowhooks attach -n PreProxyFlowHook -s SF-Tester-v1 -o $PROJECT_ID -e $ENV -t $(gcloud auth print-access-token)
-apigeecli flowhooks attach -n PostProxyFlowHook -s SF-Tester-v1 -o $PROJECT_ID -e $ENV -t $(gcloud auth print-access-token)
+apigeecli flowhooks attach -n PreProxyFlowHook -s SF-Tester-v1 -o $PROJECT_ID \
+  -e $ENV -t $(gcloud auth print-access-token)
+apigeecli flowhooks attach -n PostProxyFlowHook -s SF-Tester-v1 -o $PROJECT_ID \
+  -e $ENV -t $(gcloud auth print-access-token)
 ```
 In case you already have shared flows in the Pre-proxy and Post-proxy hooks, then you will have to add a new shared flow that calls both flows.
 
